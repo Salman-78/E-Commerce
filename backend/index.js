@@ -1,3 +1,81 @@
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const cors = require("cors");
+// const path = require("path");
+// const dotenv = require("dotenv");
+// const multer = require("multer");
+// const favicon = require("serve-favicon");
+
+// dotenv.config();
+
+// const app = express();
+// const port = process.env.PORT || 3000;
+
+// app.use(express.json());
+// app.use(cors({ origin: "*" }));
+
+// // DB Connection
+// mongoose.connect(process.env.MONGO_URI)
+//   .then(() => console.log("MongoDB connected"))
+//   .catch(err => {
+//     console.error("Connection failed:", err.message);
+//     process.exit(1);
+//   });
+
+// // Static & favicon
+// app.use("/images", express.static("upload/images"));
+// app.use(favicon(path.join(__dirname, "public", "vite.png")));
+// app.use(express.static("public"));
+
+// // Image upload setup
+// const storage = multer.diskStorage({
+//   destination: "./upload/images",
+//   filename: (req, file, cb) => {
+//     cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+//   },
+// });
+// const upload = multer({ storage });
+
+// app.post("/upload", upload.single("product"), (req, res) => {
+//   res.json({
+//     success: 1,
+//     image_url: `http://localhost:${port}/images/${req.file.filename}`,
+//   });
+// });
+
+// // Routes
+// app.use("/", require("./routes/authRoutes"));
+// app.use("/", require("./routes/productRoutes"));
+// app.use("/", require("./routes/cartRoutes"));
+
+// app.get("/", (req, res) => {
+//   res.send("Backend is running successfully");
+// });
+
+// app.listen(port, () => {
+//   console.log(`Server running at http://localhost:${port}`);
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,7 +87,7 @@ const favicon = require("serve-favicon");
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors({ origin: "*" }));
@@ -22,12 +100,12 @@ mongoose.connect(process.env.MONGO_URI)
     process.exit(1);
   });
 
-// Static & favicon
+// Static files and favicon
 app.use("/images", express.static("upload/images"));
 app.use(favicon(path.join(__dirname, "public", "vite.png")));
 app.use(express.static("public"));
 
-// Image upload setup
+// Multer setup for image upload
 const storage = multer.diskStorage({
   destination: "./upload/images",
   filename: (req, file, cb) => {
@@ -36,10 +114,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// Upload route
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    image_url: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
   });
 });
 
@@ -48,6 +127,7 @@ app.use("/", require("./routes/authRoutes"));
 app.use("/", require("./routes/productRoutes"));
 app.use("/", require("./routes/cartRoutes"));
 
+// Test route
 app.get("/", (req, res) => {
   res.send("Backend is running successfully");
 });
@@ -55,13 +135,6 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-
-
-
-
-
-
-
 
 
 
