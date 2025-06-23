@@ -1,0 +1,82 @@
+/* .item{
+    width: 350px;
+}
+.item p{
+    margin: 6px 0px;
+}
+.item-prices{
+    display: flex;
+    gap: 20px;
+}
+.item-prices-new{
+    color: #374151;
+    font-size: 18px;
+    font-weight: 600;
+}
+.item-prices-old{
+    color: #8c8c8c;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: line-through;
+}
+.item:hover{
+    transform: scale(1.05);
+    transition: 0.6s;
+} */
+
+.item{
+    width: 350px;
+}
+.item p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333; /* Dark gray for good readability */
+  text-align: center;
+  margin: 6px 0px;
+  line-height: 1.4;
+  background-color:rgb(233, 210, 255);
+  border-radius: 10px;
+}
+
+.item-prices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0; /* No gap needed when using 50% width */
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.item-price-new,
+.item-price-old {
+  width: 47%;               /* 📏 Each takes half of the space */
+  text-align: center;       /* 🧭 Center text inside each half */
+  padding: 4px 7px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.item-price-new {
+  background-color: rgb(122, 249, 122);
+  color: black;
+}
+
+.item-price-old {
+  background-color: rgb(250, 129, 129);
+  color: black;
+  text-decoration: line-through;
+}
+
+
+
+
+
+
+.item:hover{
+    transform: scale(1.05);
+    transition: 0.6s;
+}
+@media(max-width: 800px){
+    
+}

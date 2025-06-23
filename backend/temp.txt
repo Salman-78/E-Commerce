@@ -1,0 +1,28 @@
+backend/
+│
+├── controllers/
+│   ├── authController.js
+│   ├── cartController.js
+│   ├── productController.js
+│
+├── middleware/
+│   └── fetchUser.js
+│
+├── models/
+│   ├── Product.js
+│   └── User.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── cartRoutes.js
+│   └── productRoutes.js
+│
+├── upload/
+│   └── images/
+│
+├── public/
+│   └── vite.png
+│
+├── .env
+├── index.js
+├── package.json
