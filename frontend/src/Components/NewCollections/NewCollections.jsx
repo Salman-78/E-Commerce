@@ -6,7 +6,7 @@
 // const NewCollections = () => {
 //   const [new_collection, setNew_Collection] = useState([]);
 //   useEffect(() => {
-//     fetch("http://localhost:3000/newcollections")
+//     fetch("https://e-commerce-backend-99gh.onrender.com/newcollections")
 //       .then((res) => res.json)
 //       .then((data) => setNew_Collection(data));
 //   }, []);
@@ -42,7 +42,7 @@ const NewCollections = () => {
   const [new_collection, setNew_Collection] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/newcollections")
+    fetch("https://e-commerce-backend-99gh.onrender.com/newcollections")
       .then((res) => res.json()) // ✅ Call .json() correctly
       .then((data) => {
         if (Array.isArray(data)) { // ✅ Ensure the response is an array

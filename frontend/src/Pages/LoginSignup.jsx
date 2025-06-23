@@ -18,7 +18,7 @@ const LoginSignup = () => {
   const login = async (params) => {
     console.log("login success", formData);
     let responseData;
-    await fetch("http://localhost:3000/login", {
+    await fetch("https://e-commerce-backend-99gh.onrender.com/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -39,7 +39,7 @@ const LoginSignup = () => {
   const signup = async (params) => {
     console.log("signup success", formData);
     let responseData;
-    await fetch("http://localhost:3000/signup", {
+    await fetch("https://e-commerce-backend-99gh.onrender.com/signup", {
       method: "POST",
       headers: {
         Accept: "application/json",

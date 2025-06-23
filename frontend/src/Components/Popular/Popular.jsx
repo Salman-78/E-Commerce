@@ -35,7 +35,7 @@ import Item from "../Item/Item";
 const Popular = () => {
   const [popularProducts, setPopularProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/popularinwomen")
+    fetch("https://e-commerce-backend-99gh.onrender.com/popularinwomen")
       .then((res) => res.json())
       .then((data) => setPopularProducts(data));
   }, []);
