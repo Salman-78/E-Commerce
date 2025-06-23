@@ -18,11 +18,11 @@ export const ShopContextProvider = ({ children }) => {
   const [all_product, setAll_Product] = useState([]);
 
   useEffect(() => {
-    fetch("https://e-commerce-backend-99gh.onrender.com/allproducts")
+    fetch("https://e-commerce-backend-kfee.onrender.com/allproducts")
       .then((res) => res.json())
       .then((data) => setAll_Product(data));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://e-commerce-backend-99gh.onrender.com/getcart", {
+      fetch("https://e-commerce-backend-kfee.onrender.com/getcart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -39,7 +39,7 @@ export const ShopContextProvider = ({ children }) => {
   const addToCart = (itemId) => {
     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://e-commerce-backend-99gh.onrender.com/addtocart", {
+      fetch("https://e-commerce-backend-kfee.onrender.com/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -55,7 +55,7 @@ export const ShopContextProvider = ({ children }) => {
   const removeFromCart = (itemId) => {
     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://e-commerce-backend-99gh.onrender.com/removefromcart", {
+      fetch("https://e-commerce-backend-kfee.onrender.com/removefromcart", {
         method: "POST",
         headers: {
           Accept: "application/json",
