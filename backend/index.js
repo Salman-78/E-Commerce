@@ -101,26 +101,30 @@ mongoose.connect(process.env.MONGO_URI)
   });
 
 // Static files and favicon
-app.use("/images", express.static("upload/images"));
+// app.use("/images", express.static("upload/images"));
 app.use(favicon(path.join(__dirname, "public", "vite.png")));
 app.use(express.static("public"));
 
-// Multer setup for image upload
-const storage = multer.diskStorage({
-  destination: "./upload/images",
-  filename: (req, file, cb) => {
-    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("./utils/cloudinary");
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "products", // Folder in your Cloudinary dashboard
+    allowed_formats: ["jpg", "png", "jpeg"],
   },
 });
+
 const upload = multer({ storage });
 
-// Upload route
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+    image_url: req.file.path, // Cloudinary image URL
   });
 });
+
 
 // Routes
 app.use("/", require("./routes/authRoutes"));
